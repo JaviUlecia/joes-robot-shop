@@ -4,18 +4,20 @@ import { IProduct } from '../catalog/product.model';
 @Component({
   selector: 'bot-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  styleUrls: ['./product-details.component.css'],
+
 })
 export class ProductDetailsComponent {
   @Input() product!: IProduct;
   @Output() buy = new EventEmitter();
 
-  
-  getImageUrl(product: IProduct){
-    return  '/assets/images/robot-parts/' + product.imageName;
+  getImageUrl(product: IProduct) {
+    if (!product) return '';
+    return '/assets/images/robot-parts/' + product.imageName;
   }
 
-  buyButtonClick(product:IProduct) {
+  buyButtonClicked(product: IProduct) {
+
     this.buy.emit();
   }
 }
