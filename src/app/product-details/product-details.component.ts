@@ -5,6 +5,7 @@ import { IProduct } from '../catalog/product.model';
   selector: 'bot-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
+
 })
 export class ProductDetailsComponent {
   @Input() product!: IProduct;
@@ -16,6 +17,7 @@ export class ProductDetailsComponent {
   }
 
   buyButtonClicked(product: IProduct) {
+
     this.buy.emit();
   }
 }

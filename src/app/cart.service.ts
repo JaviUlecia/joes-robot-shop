@@ -15,5 +15,6 @@ export class CartService {
     this.http.post('/api/cart', this.cart).subscribe(() => {
       console.log('added ' + product.name + ' to cart!');
     });
+
   }
 }

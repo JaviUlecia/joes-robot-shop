@@ -1,4 +1,5 @@
 export interface IProduct {
+
   id: number;
   description: string;
   name: string;
@@ -7,3 +8,4 @@ export interface IProduct {
   price: number;
   discount: number;
 }
+
