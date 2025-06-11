@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IProduct } from './product.model';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'bot-catalog',
@@ -8,10 +9,10 @@ import { IProduct } from './product.model';
 })
 export class CatalogComponent {
   products: IProduct[];
-
   filter:string = '';
+  //private cartSvc: CartService = inject(CartService); se puede hacer así, pero es mejor inyectar el servicio en el constructor
 
-  constructor() {
+  constructor(private cartSvc: CartService) {
     this.products = [
   {
     id: 1,
@@ -189,9 +190,6 @@ export class CatalogComponent {
 ];
   }
 
-  getImageUrl(product: IProduct){
-    return  '/assets/images/robot-parts/' + product.imageName;
-  }
 
   getFilterProducts() {
     return this.filter === ''
@@ -205,5 +203,9 @@ export class CatalogComponent {
     } else {
       return '';
     }
+  }
+
+  addToCart(product: IProduct) {
+    this.cartSvc.add(product);
   }
 }
